@@ -43,10 +43,7 @@
                     <ul class="navbar-nav ms-auto pe-10 ">
                         {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link {% if request.endpoint == 'calculate' %}active{% endif %}" href="{{url_for('calculate')}}">Калькулятор</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.endpoint == 'users' %}active{% endif %}" href="{{url_for('users')}}">Список пользователей</a>
+                            <a class="nav-link {% if request.endpoint == 'seat' %}active{% endif %}" href="{{url_for('seat')}}">Номер сидения</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,7 +72,8 @@
 
     <main>
         <div class="container my-3">
-
+           {% block content %}
+           {% endblock %}
         </div>
     </main>
     
