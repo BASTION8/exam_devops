@@ -7,27 +7,28 @@ from flask_login import UserMixin
 
 from app import db, app
 
-class Train(db.Model, UserMixin):  
-    __tablename__ = 'trains'
+class Free_Cars(db.Model, UserMixin):  
+    __tablename__ = 'free_cars'
 
     id = db.Column(db.Integer, primary_key=True)    
-    departure_station = db.Column(db.String(40), nullable=False)
-    arrival_station = db.Column(db.String(250), nullable=False)
-    time_departure = db.Column(db.String(100), nullable=False)
-    time_arrival = db.Column(db.String(100), nullable=False)
+    model = db.Column(db.String(40), nullable=False)
+    number = db.Column(db.String(250), nullable=False)
+    reserve = db.Column(db.String(100), nullable=False)
 
-
-class Ticket(db.Model, UserMixin):  
-    __tablename__ = 'tickets'
+class Cars(db.Model, UserMixin):  
+    __tablename__ = 'cars'
 
     id = db.Column(db.Integer, primary_key=True)    
-    full_name = db.Column(db.String(40), nullable=False)
-    passport_series = db.Column(db.String(250), nullable=False)
-    number_train = db.Column(db.String(100), nullable=False)
-    seat_number = db.Column(db.String(100), nullable=False)
+    phone = db.Column(db.String(40), nullable=False)
+    sms = db.Column(db.String(250), nullable=False)
+    model = db.Column(db.String(100), nullable=False)
+    number = db.Column(db.String(100), nullable=False)
+    fuel_level = db.Column(db.String(100), nullable=False)
+
     
-    def check_password(self, password: str):
-        return self.passport_series == password
+    
+    def check_password(self, sms: str):
+        return self.sms == sms
 
 
     

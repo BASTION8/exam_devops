@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Модель выбранного автомобиля: {{current_user.model}}. Номер выбранного автомобиля: {{current_user.number}}. Уровень оставшегося топлива: {{current_user.fuel_level}}</p>
+{% endblock  %}

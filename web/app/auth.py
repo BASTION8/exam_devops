@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 
-from models import Ticket, Train
+from models import Free_Cars, Cars
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -19,7 +19,7 @@ def init_login_manager(app):
     login_manager.init_app(app)
 
 def load_user(user_id):
-    user = Ticket.query.get(user_id)
+    user = Cars.query.get(user_id)
     return user
 
 def check_rights():
@@ -37,10 +37,10 @@ def check_rights():
 def login():
     if request.method == 'POST':
         login = request.form.get('login')
-        password = request.form.get('password')
-        if login and password:
-            user = Ticket.query.filter_by(id=login).first()
-            if user and user.check_password(password):
+        sms = request.form.get('password')
+        if login and sms:
+            user = Cars.query.filter_by(phone=login).first()
+            if user and user.check_password(sms):
                 login_user(user)
                 flash('Вы успешно аутентифицированы.', 'success')
                 next = request.args.get('next')
